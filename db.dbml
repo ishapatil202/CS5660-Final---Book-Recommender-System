@@ -1,0 +1,40 @@
+Table books {
+    id int [pk]
+    text text
+    summary text
+    cluster int [ref: > clusters.id]
+    note: "Removed in mini"
+}
+
+Table embeddings {
+    id int [pk, ref: - books.id]
+    text blob [note: "Pickled python list"]
+    summary blob [note: "Pickled python list"]
+    title blob [note: "Pickled python list"]
+    authors blob [note: "Pickled python list of lists"]
+    subjects blob [note: "Pickled python list of lists"]
+    bookshelves blob [note: "Pickled python list of lists"]
+    note: "Removed in mini"
+}
+
+Table clusterable {
+    id int [pk, ref: - books.id]
+    data blob
+    unitized blob [note: "data / len(data)"]
+}
+
+Table clusters {
+    id int [pk]
+    center blob [note: "numpy array of centroid"]
+}
+
+Table metadata {
+    id int [pk, ref: - books.id]
+    issued int [note: "Seconds relative to UNIX epoch, per SQLite standard for timestamps"]
+    title text
+    language text
+    authors text [note: "JSON encoded list of strings"]
+    subjects text [note: "JSON encoded list of strings"]
+    LoCC text [note: "JSON encoded list of strings"]
+    bookshelves text [note: "JSON encoded list of strings"]
+}

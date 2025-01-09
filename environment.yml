@@ -1,0 +1,25 @@
+name: stats
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - numpy
+  - pandas
+  - ipykernel
+  - matplotlib
+  - umap-learn
+  - scikit-learn
+  - jupyter
+  - jupyterlab
+  - hdbscan
+  - seaborn
+  - datashader
+  - requests
+  - tqdm
+  - transformers
+  - pytorch
+  - datasets
+  - evaluate
+  - accelerate
+  - sqlite3
